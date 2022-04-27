@@ -10,7 +10,20 @@ const answerString = fs.readFileSync(filepaths[0], {
   flag: "r",
 });
 
-let answers = [...answerString].map((x) => +x);
+let answers = [...answerString].map((x) => {
+  switch (x) {
+    case "A":
+      return 1;
+    case "B":
+      return 2;
+    case "C":
+      return 3;
+    case "D":
+      return 4;
+    default:
+      return +x;
+  }
+});
 const totalQuestionsNum = answerString.length;
 
 const questionContainer = document.querySelector(".question-container");
