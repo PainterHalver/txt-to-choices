@@ -39,8 +39,7 @@ const renderStatsInit = function () {
     overall.insertAdjacentHTML(
       "beforeend",
       `
-      <div class="question-stat question-stat-${index + 1}" data-question-${
-        index + 1
+      <div class="question-stat question-stat-${index + 1}" data-question-${index + 1
       }>
           <p>Question ${index + 1}: </p>
           <button style="margin-right:50px;">Go to this</button>
@@ -58,8 +57,7 @@ const gameHandler = function (currentQuestion) {
         // RIGHT ANSWER
         document.querySelector(
           `.question-stat-${currentQuestion} p`
-        ).innerHTML = `Question ${currentQuestion}: <span class="correct">CORRECT &nbsp&nbsp&nbsp${
-          answers[currentQuestion - 1]
+        ).innerHTML = `Question ${currentQuestion}: <span class="correct">CORRECT &nbsp&nbsp&nbsp${answers[currentQuestion - 1]
         }</span>`;
 
         btn.classList.add("green");
@@ -70,9 +68,8 @@ const gameHandler = function (currentQuestion) {
           `.question-stat-${currentQuestion} p`
         ).innerHTML = `Question ${currentQuestion}: <span class="wrong">Wrong ${Number(
           btn.textContent
-        )} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><span class="correct">${
-          answers[currentQuestion - 1]
-        }</span>`;
+        )} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><span class="correct">${answers[currentQuestion - 1]
+          }</span>`;
 
         btn.classList.add("red");
         answerBtns[answers[currentQuestion - 1] - 1].classList.add("green");
@@ -104,6 +101,40 @@ const init = function () {
       setCurrentQuestion(index + 1);
       statsOverlay.classList.toggle("hidden");
     });
+  });
+
+  // Handle keyboard input
+  document.addEventListener("keydown", function (event) {
+    const answerBtns = document.querySelectorAll(".question--answer-btn button");
+    switch (event.key) {
+      case "1":
+        answerBtns[0].click();
+        break;
+      case "2":
+        answerBtns[1].click();
+        break;
+      case "3":
+        answerBtns[2].click();
+        break;
+      case "4":
+        answerBtns[3].click();
+        break;
+      case "ArrowRight":
+        if (currentQuestion < totalQuestionsNum) {
+          setCurrentQuestion(currentQuestion + 1);
+        }
+        break;
+      case "ArrowLeft":
+        if (currentQuestion > 1) {
+          setCurrentQuestion(currentQuestion - 1);
+        }
+        break;
+      case "s":
+        statsOverlay.classList.toggle("hidden");
+        break;
+      default:
+        break;
+    }
   });
 };
 
