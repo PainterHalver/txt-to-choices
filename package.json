@@ -1,14 +1,14 @@
 {
   "name": "text_to_choices",
   "version": "1.1.0",
-  "description": "",
+  "description": "Map a text file to 4-choice questions.",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "author": "",
+  "author": "PainterHalver",
   "license": "ISC",
   "dependencies": {
     "@electron/remote": "^1.1.0",
@@ -29,7 +29,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "Text to choices"
+            "name": "TextToChoices"
           }
         },
         {
